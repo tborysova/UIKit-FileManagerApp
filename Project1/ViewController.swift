@@ -23,11 +23,11 @@ class ViewController: UITableViewController {
         
         for item in items {
             if item.hasPrefix("nssl") {
-                
                 pictures.append(item)
             }
         }
-        
+        print(pictures)
+        pictures.sort()
         print(pictures)
     }
     
@@ -46,9 +46,13 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier:
                                                             "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
+            vc.selectedPictureNumber = indexPath.row + 1
+            vc.totalPictures = pictures.count
             navigationController?.pushViewController(vc, animated: true)
         }
         
     }
+    
+    
 }
 
